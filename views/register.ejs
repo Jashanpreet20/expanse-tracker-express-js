@@ -1,0 +1,56 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/file.css">
+</head>
+<body>
+  <div class="main">
+    <div class="register">
+      <header>
+        <h2>Expanse Tracker</h2>
+      </header>
+      
+      <form action="/add" method="POST" class="register">
+        <label for="expense">Choose expense Amount:</label><br>
+        <input type="text" name="price" class="input" placeholder="Enter price" ><br><br>
+    
+        <label for="description">Choose description:</label><br>
+        <input type="text" name="itemname" class="input" placeholder="Enter Description" ><br><br>
+     
+        <label for="category">Choose a category:</label><br>
+          <select name="catergory" id="cat" form="carform" class="selection">
+              <option value="movies">Movies</option>
+              <option value="Electricity">Electricity</option>
+              <option value="fuel">Fuel</option>
+              <option value="food">Food</option>
+            </select><br><br>
+       
+          <input type="submit" value="submit" class="submit">
+          <div>
+            <ul class="list-unstyled">
+              <% if(list.length > 0) { %>
+                  <% for(var i=0; i<list.length; i++) { %>
+                      <li > <%- list[i].itemname %>&nbsp;  <%- list[i].price %>
+                        <button type="submit" class="btn" formmethod="get" formaction="/remove/<%=list[i].id%>">Delete</button>
+                        <button type="submit" class="btn" formmethod="get" formaction="/update/<%=list[i].id%>">update</button>
+                      </li>
+                       <% } %>
+                  <% } else { %> 
+                      <h1>no user there</h1>
+             <% } %>
+
+          </ul>
+          </div>
+      </form> 
+    </div>
+  </div>
+</body>
+</html>
+
